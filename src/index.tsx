@@ -4,8 +4,7 @@ import Home from './pages/customer/home';
 import Login from './pages/login';
 import { useEffect } from 'react';
 import Register from './pages/register';
-
-
+import PurchasePage from './pages/customer/purchasePage';
 
 function Index() {
     const { isLoggedIn } = useAuth()
@@ -23,6 +22,7 @@ function Index() {
     <Routes>
         <Route path="/">
         <Route index element={<Home />} />
+            <Route path='/purchase-page' element={<PurchasePage />} />
         </Route>
         <Route path="/auth">
             <Route path='/auth/login' element={<Login />} />
