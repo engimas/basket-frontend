@@ -4,29 +4,33 @@ import Home from './pages/customer/home';
 import Login from './pages/login';
 import { useEffect } from 'react';
 import Register from './pages/register';
+import Categories from './pages/customer/categories';
 import PurchasePage from './pages/customer/purchasePage';
+
+
 
 function Index() {
     const { isLoggedIn } = useAuth()
     const navigate = useNavigate()
 
     useEffect(()=>{
-        if(isLoggedIn()){
-            navigate('/')
-        }else{
+        if(!isLoggedIn()){
             navigate('/auth/login')
         }
-    })
+    }, [isLoggedIn])
 
   return (
     <Routes>
         <Route path="/">
         <Route index element={<Home />} />
-            <Route path='/purchase-page' element={<PurchasePage />} />
+        <Route path='/categories' element={<Categories />} />
+        <Route path='/purchase-page' element={<PurchasePage />} />
+
         </Route>
         <Route path="/auth">
             <Route path='/auth/login' element={<Login />} />
             <Route path='/auth/register' element={<Register />} />
+
         </Route>
     </Routes>
   )
