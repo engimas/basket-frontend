@@ -6,10 +6,12 @@ function Login() {
   const { login } = useAuth();
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
+  const navigate = useNavigate()
 
   const handleLogin = () => {
     if(email && password){
       login({ email, password, name: "", type: "Consumer" })
+      navigate('/');
       return
     }
     alert("Please fill the form");
