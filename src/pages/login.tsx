@@ -2,9 +2,9 @@ import { Link } from "react-router-dom"
 
 function Login() {
   return (
-    <div className="flex">
+    <div className="flex items-center h-screen">
       <div className="left w-2/5 flex flex-col mx-20 px-10 text-center prose">
-        <div className="area bg-white">
+        <div className="area bg-base-100 p-5">
         <h3 className="mt-10">Login</h3>
           <form className="flex flex-col gap-5">
             <div className="input-area">
