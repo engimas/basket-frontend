@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom"
 import useAuth from "../hooks/useAuth"
 import { useState } from "react";
+import AuthImg from "../components/authImg";
+
 
 function Login() {
   const { login } = useAuth();
@@ -21,7 +23,7 @@ function Login() {
     <div className="flex items-center h-screen">
       <div className="left w-2/5 flex flex-col mx-20 px-10 text-center prose">
         <div className="area bg-base-100 p-5">
-        <h3 className="mt-10">Login</h3>
+        <h2 className="mt-10">Login</h2>
           <form className="flex flex-col gap-5">
             <div className="input-area">
               <input className="w-full input input-bordered" type="email" name="email" id="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -41,13 +43,15 @@ function Login() {
             <hr className="my-5"/>
             <div className="flex gap-3">
               <span>Don't have an account?</span>
-              <Link to={""}>Register</Link>
+              <Link to={"/auth/register"}>Register</Link>
             </div>
             </div>
           </form>
         </div>
       </div>
-      <div className="right"></div>
+      <div className="right flex prose items-center prose-h2:text-3xl prose-h2:mb-3 prose-p:font-medium">
+        <AuthImg/>
+      </div>
     </div>
   )
 }

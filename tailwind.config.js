@@ -5,9 +5,10 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    colors:{
-    },
     extend: {
+      fontFamily:{
+        "sans": ["Inter"],
+      },
       colors:{
         "primary":"#f8f8f8",
         "accent":"#299345",

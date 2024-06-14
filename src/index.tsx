@@ -5,11 +5,12 @@ import Login from './pages/login';
 import { useEffect } from 'react';
 import Register from './pages/register';
 import Categories from './pages/customer/categories';
+import NavBar from './components/navbar';
 
 
 
 function Index() {
-    const { isLoggedIn } = useAuth()
+    const { isLoggedIn, user } = useAuth()
     const navigate = useNavigate()
 
     useEffect(()=>{
@@ -20,11 +21,14 @@ function Index() {
 
   return (
     <Routes>
-        <Route path="/">
-        <Route index element={<Home />} />
-        <Route path='/categories' element={<Categories />} />
-
+            {user?.type === "Consumer" ?
+        <>
+        <Route path='/' element={<NavBar/>}>
+            <Route index element={<Home />} />
+            <Route path='categories' element={<Categories />} />
         </Route>
+        </>: <></>
+        }
         <Route path="/auth">
             <Route path='/auth/login' element={<Login />} />
             <Route path='/auth/register' element={<Register />} />
