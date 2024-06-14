@@ -7,6 +7,7 @@ import Register from './pages/register';
 import Categories from './pages/customer/categories';
 import NavBar from './components/navbar';
 import PurchasePage from './pages/customer/purchasePage';
+import Profile from './components/basicProfile';
 
 
 
@@ -28,6 +29,8 @@ function Index() {
             <Route index element={<Home />} />
             <Route path='categories' element={<Categories />} />
         <Route path='/purchase-page' element={<PurchasePage />} />
+        <Route path='/profile' element={<Profile />} />
+
         </Route>
         </>: <></>
         }
