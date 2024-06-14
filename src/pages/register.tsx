@@ -1,8 +1,39 @@
+import { Link } from "react-router-dom"
 
 function Register() {
-  return (
-    <div>Register</div>
-  )
+    return (
+        <div className="flex items-center h-screen">
+            <div className="left w-2/5 flex flex-col mx-20 px-10 text-center prose">
+                <div className="area bg-base-100 p-5">
+                <h3 className="mt-10">Register</h3>
+                    <form className="flex flex-col gap-5">
+                        <div className="input-area">
+                            <input className="w-full input input-bordered" type="email" name="email" id="email" placeholder="Email" />
+                        </div>
+                        <div className="input-area">
+                            <input className="input input-bordered w-full" type="password" name="password" id="password" placeholder="Password" />
+                        </div>
+                        <div className="flex justify-between items-center">
+                            <div className="flex gap-2 items-center">
+                                <input className="checkbox" type="checkbox" id="signed"  />
+                                <label htmlFor="signed">Keep me signed in</label>
+                            </div>
+                            <Link to={""}>Forget Password</Link>
+                        </div>
+                        <button type="submit" className="bg-accent btn text-primary hover:bg-accent ">Register</button>
+                        <div>
+                        <hr className="my-5"/>
+                        <div className="flex gap-3">
+                            <span>Already have an account?</span>
+                            <Link to={""}>Login</Link>
+                        </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div className="right"></div>
+        </div>
+    )
 }
 
 export default Register
