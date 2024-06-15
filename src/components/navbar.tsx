@@ -69,6 +69,7 @@ function NavBar() {
                 </Link>
                 <Link to="/wallet" className="btn btn-ghost btn-sm rounded-btn text-accent">
                     Wallet
+                </Link>
                 <Link to="/farmers" className="btn btn-ghost btn-sm rounded-btn">
                     Farmers
                 </Link>
