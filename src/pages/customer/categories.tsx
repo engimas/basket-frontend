@@ -155,7 +155,7 @@ function Categories() {
                 <h2 className="card-title">{item.name}</h2>
                 <p>{item.detail}</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">Buy Now</button>
+                  <Link to={"/purchase-page/" + index} className="btn btn-primary">Buy Now</Link>
                 </div>
               </div>
             </div>

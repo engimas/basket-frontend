@@ -67,6 +67,12 @@ function NavBar() {
                 <Link to="/categories" className="btn btn-ghost btn-sm rounded-btn">
                     Categories
                 </Link>
+                <Link to="/wallet" className="btn btn-ghost btn-sm rounded-btn text-accent">
+                    Wallet
+                </Link>
+                <Link to="/farmers" className="btn btn-ghost btn-sm rounded-btn">
+                    Farmers
+                </Link>
                 
                 
             </div>
@@ -81,7 +87,7 @@ function NavBar() {
                     >
                         <div className="indicator" style={{width: '23px'}}>
                             <img src={basket} alt="basket" />
-                            <span className="badge badge-sm indicator-item">8</span>
+                            {/* <span className="badge badge-sm indicator-item"></span> */}
                         </div>
                     </div>
                 </div>

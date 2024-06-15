@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import bellPaper from "../../assets/category/bell-peper.jpg";
 import bhindi from "../../assets/category/bhindi.png";
@@ -7,11 +7,25 @@ import coconut from "../../assets/category/coconut.png";
 import ghee from "../../assets/category/ghee.jpg";
 import corn from "../../assets/category/corn.png";
 import { Link } from "react-router-dom";
+import useBookedItem from "../../globalState";
 
 function Cart() {
   const [activeTab, setActiveTab] = useState<
     "Tomorrow" | "Upcomming" | "Recurring"
   >("Tomorrow");
+
+  const { bookedItem } = useBookedItem();
+  const [totalAmount, setTotalAmount] = useState(0);
+  
+  useEffect(()=>{
+    let total = 0;
+    console.log(bookedItem)
+    bookedItem.forEach((item)=>{
+      total += item.price.slice(4) * item.quantity;
+    })
+    setTotalAmount(total);
+    console.log(total)
+  },[bookedItem])
 
   return (
     <>
@@ -114,35 +128,92 @@ function Cart() {
           <div className="content w-full overflow-auto h-80 px-10 py-2">
             {activeTab === "Tomorrow" && (
               <div className="tomorrow">
-                <ul className="list-none">
-                  <li className="flex flex-row bg-primary px-5 py-1 items-center gap-5">
-                    <div className="logo">
-                      <img width={50} src={bellPaper} alt="bellPaper" />
-                    </div>
-                    <div className="text flex w-full items-center">
-                      <p className="flex flex-col">
-                        Bell Paper
+                <ul className="list-none flex flex-col">
+                  {bookedItem.map((item, index) => (
+                    <>
+                      {(item.type === "tommorow" || item.type === "daily") && (
+                        <li
+                          key={index}
+                          className="flex flex-row bg-primary px-5 py-1 items-center gap-5"
+                        >
+                          <div className="logo">
+                            <img
+                              width={50}
+                              src={"." + item.item.img}
+                              alt="bellPaper"
+                            />
+                          </div>
+                          <div className="text flex w-full items-center">
+                            <div className="flex flex-col">
+                            <p className="flex flex-col text-xl font-medium">{item.item.name}</p>
+                            <div className="flex flex-row gap-5">
+                              <p className="text-sm">{item.quantity}Kg
+                              </p>
+                              <p className="text-sm text-accent">{item.price}</p>
+                            </div>
+                            </div>
 
-                        <span className="text-sm bg-accent text-white w-min px-2 rounded-lg">New</span>
-                      </p>
-                      <button className="ghost ml-auto">Edit</button>
-                    </div>
-                  </li>
+                            <button className="ghost ml-auto">Edit</button>
+                          </div>
+                        </li>
+                      )}
+                    </>
+                  ))}
                 </ul>
+                <p className="text-accent text-end pt-10">Total Price: {totalAmount}</p>
               </div>
             )}
             {activeTab === "Upcomming" && (
               <div className="tomorrow">
-                <ul className="list-none">
-                  <li>Nonsense order</li>
-                  <li>Nonsense order</li>
+                <ul className="list-none flex flex-col">
+                  {bookedItem.map((item, index) => (
+                    <>
+                      <li
+                        key={index}
+                        className="flex flex-row bg-primary px-5 py-1 items-center gap-5"
+                      >
+                        <div className="logo">
+                          <img
+                            width={50}
+                            src={"." + item.item.img}
+                            alt="bellPaper"
+                          />
+                        </div>
+                        <div className="text flex w-full items-center">
+                          <p className="flex flex-col">{item.item.name}</p>
+                          <button className="ghost ml-auto">Edit</button>
+                        </div>
+                      </li>
+                    </>
+                  ))}
                 </ul>
               </div>
             )}
             {activeTab === "Recurring" && (
               <div className="tomorrow">
-                <ul className="list-none">
-                  <li>Nonsense order</li>
+                <ul className="list-none flex flex-col">
+                  {bookedItem.map((item, index) => (
+                    <>
+                      {(item.type === "weekly" || item.type === "daily") && (
+                        <li
+                          key={index}
+                          className="flex flex-row bg-primary px-5 py-1 items-center gap-5"
+                        >
+                          <div className="logo">
+                            <img
+                              width={50}
+                              src={"." + item.item.img}
+                              alt="bellPaper"
+                            />
+                          </div>
+                          <div className="text flex w-full items-center">
+                            <p className="flex flex-col">{item.item.name}</p>
+                            <button className="ghost ml-auto">Edit</button>
+                          </div>
+                        </li>
+                      )}
+                    </>
+                  ))}
                 </ul>
               </div>
             )}

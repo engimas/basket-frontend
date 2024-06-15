@@ -18,9 +18,16 @@ import Stock from "./pages/producer/stock";
 import SearchProducer from "./pages/producer/search";
 import Orders from "./pages/producer/orders";
 
-
+import Farmers from "./pages/customer/farmers";
+import FarmerDetails from "./pages/customer/farmer";
 import Profile from "./components/basicProfile";
 import Settings from "./pages/customer/settings";
+
+import AdminLogin from "./pages/admin/login"
+import AdminSideBar from "./components/sidebarAdmin"
+import AdminHome from "./pages/admin/home"
+import Wallet from "./pages/customer/wallet";
+ 
 
 
 function Index() {
@@ -40,11 +47,16 @@ function Index() {
           <Route path="/" element={<NavBar />}>
             <Route index element={<Home />} />
             <Route path="categories" element={<Categories />} />
+            <Route path="farmers" element={<Farmers />} />
             <Route path="/purchase-page" element={<PurchasePage />} />
+            <Route path="/purchase-page/:id" element={<PurchasePage />} />
+
             <Route path="/cart" element={<Cart/>} />
             <Route path="/search/:keyword" element={<Search/>} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/wallet" element={<Wallet />} />
+            <Route path="/farmer/:id" element={<FarmerDetails/>} />
 
           </Route>
         </>
@@ -64,6 +76,14 @@ function Index() {
       <Route path="/auth">
         <Route path="/auth/login" element={<Login />} />
         <Route path="/auth/register" element={<Register />} />
+      </Route>
+
+      <Route path="/admin">
+        <Route index element={<AdminLogin />} />
+        <Route path="/admin/start" element={<AdminSideBar />}>
+          <Route index element={<AdminHome />} />
+      </Route>
+
       </Route>
     </Routes>
   );
