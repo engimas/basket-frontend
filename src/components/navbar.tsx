@@ -67,6 +67,9 @@ function NavBar() {
                 <Link to="/categories" className="btn btn-ghost btn-sm rounded-btn">
                     Categories
                 </Link>
+                <Link to="/farmers" className="btn btn-ghost btn-sm rounded-btn">
+                    Farmers
+                </Link>
                 
                 
             </div>

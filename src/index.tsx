@@ -17,7 +17,8 @@ import NavbarProducer from "./components/navbarProducer";
 import Stock from "./pages/producer/stock";
 import SearchProducer from "./pages/producer/search";
 
-
+import Farmers from "./pages/customer/farmers";
+import FarmerDetails from "./pages/customer/farmer";
 import Profile from "./components/basicProfile";
 import Settings from "./pages/customer/settings";
 
@@ -39,11 +40,13 @@ function Index() {
           <Route path="/" element={<NavBar />}>
             <Route index element={<Home />} />
             <Route path="categories" element={<Categories />} />
+            <Route path="farmers" element={<Farmers />} />
             <Route path="/purchase-page" element={<PurchasePage />} />
             <Route path="/cart" element={<Cart/>} />
             <Route path="/search/:keyword" element={<Search/>} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/farmer/:id" element={<FarmerDetails/>} />
 
           </Route>
         </>
