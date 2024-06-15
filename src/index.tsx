@@ -9,6 +9,7 @@ import NavBar from "./components/navbar";
 import PurchasePage from "./pages/customer/purchasePage";
 import Cart from "./pages/customer/cart";
 import Profile from "./components/basicProfile";
+import Settings from "./pages/customer/settings";
 
 
 function Index() {
@@ -31,6 +32,7 @@ function Index() {
             <Route path="/purchase-page" element={<PurchasePage />} />
             <Route path="/cart" element={<Cart/>} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
 
           </Route>
         </>
