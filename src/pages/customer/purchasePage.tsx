@@ -1,27 +1,24 @@
 import React, { useState, useEffect } from "react";
-import "tailwindcss/tailwind.css";
 import image from "../../assets/Amul.jpg"; // Ensure this path points to the uploaded image
 import image1 from "../../assets/Amul.jpg";
 import image2 from "../../assets/meat.png";
 import image3 from "../../assets/onion.png";
 
-const ConfimTr = () => {
+const ConfirmTr = () => {
   return (
     <div className="wrapper">
-      {" "}
       <svg
         className="checkmark"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 52 52"
       >
-        {" "}
         <circle
           className="checkmark__circle"
           cx="26"
           cy="26"
           r="25"
           fill="none"
-        />{" "}
+        />
         <path
           className="checkmark__check"
           fill="none"
@@ -35,10 +32,11 @@ const ConfimTr = () => {
 const PurchasePage: React.FC = () => {
   const [quantity, setQuantity] = useState(1);
   const [showSubscribeOptions, setShowSubscribeOptions] = useState(false);
-  const [selectedSubscription, setSelectedSubscription] = useState("");
-  const [selectedOrder, setSelectedOrder] = useState(false);
+  const [selectedDate, setSelectedDate] = useState('');
+  const [showDayPicker, setShowDayPicker] = useState(false);
   const [showConfirmMessage, setShowConfirmMessage] = useState(false);
   const [orderType, setOrderType] = useState('order');
+  const [selectedOrder, setSelectedOrder] = useState(false);
 
   const pricePerUnit = 80;
 
@@ -53,17 +51,27 @@ const PurchasePage: React.FC = () => {
   };
 
   const handleSubscriptionSelect = (option: string) => {
-    setSelectedSubscription(option);
+    if (option === 'weekly') {
+      setShowDayPicker(true);
+    } else {
+      setOrderType(option + ' subscription');
+      setSelectedOrder(true);
+    }
     setShowSubscribeOptions(false);
-    setOrderType(option + ' subscription');
+  };
+
+  const handleDaySelect = (day: string) => {
+    setSelectedDate(day);
+    setOrderType(day + ' subscription');
     setSelectedOrder(true);
+    setShowDayPicker(false);
   };
 
   const handleAddToBasket = () => {
     setShowConfirmMessage(true);
   };
 
-  const handleSelectedOrder = () => {
+  const handleOrderConfirmation = () => {
     setShowConfirmMessage(false);
     setSelectedOrder(true);
   };
@@ -72,7 +80,7 @@ const PurchasePage: React.FC = () => {
     if (selectedOrder) {
       const timer = setTimeout(() => {
         setSelectedOrder(false);
-      }, 2000); // Adjust the timeout duration as needed
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, [selectedOrder]);
@@ -188,10 +196,17 @@ const PurchasePage: React.FC = () => {
       </div>
 
       {showSubscribeOptions && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 modal-overlay" onClick={(e) => handleOutsideClick(e, () => setShowSubscribeOptions(false))}>
-          <div className="bg-white p-4 rounded" style={{width: '300px', height: '220px'}} onClick={(e) => e.stopPropagation()}>
-            <h2 className="text-lg font-medium" style={{textAlign: 'center'}}>Choose Subscription Plan</h2>
-            <div className="mt-4 space-y-2">
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 modal-overlay"
+          onClick={(e) => handleOutsideClick(e, () => setShowSubscribeOptions(false))}
+        >
+          <div
+            className="bg-white p-4 rounded"
+            style={{ width: '300px', height: '220px' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-lg font-medium" style={{ textAlign: 'center' }}>Choose Subscription Plan</h2>
+            <div className="mt-8 space-y-4">
               <button
                 className="block w-full py-2 bg-green-500 text-white rounded"
                 onClick={() => handleSubscriptionSelect("daily")}
@@ -204,12 +219,32 @@ const PurchasePage: React.FC = () => {
               >
                 Weekly
               </button>
-              <button
-                className="block w-full py-2 bg-green-500 text-white rounded"
-                onClick={() => handleSubscriptionSelect("monthly")}
-              >
-                Monthly
-              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showDayPicker && (
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 modal-overlay"
+          onClick={(e) => handleOutsideClick(e, () => setShowDayPicker(false))}
+        >
+          <div
+            className="bg-white p-4 rounded"
+            style={{ width: '300px', height: '400px' }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-lg font-medium" style={{ textAlign: 'center' }}>Choose a Day of the Week</h2>
+            <div className="mt-4 space-y-2">
+              {['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map((day) => (
+                <button
+                  key={day}
+                  className="block w-full py-2 bg-green-500 text-white rounded"
+                  onClick={() => handleDaySelect(day)}
+                >
+                  {day}
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -218,13 +253,18 @@ const PurchasePage: React.FC = () => {
       {selectedOrder && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50">
           <div className="bg-white p-4 rounded">
-            <h2 className="text-lg font-medium">Your {orderType} has been submitted <ConfimTr/></h2>
+            <h2 className="text-lg font-medium">
+              Your {orderType} has been submitted <ConfirmTr />
+            </h2>
           </div>
         </div>
       )}
 
       {showConfirmMessage && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 modal-overlay" onClick={(e) => handleOutsideClick(e, () => setShowConfirmMessage(false))}>
+        <div
+          className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 modal-overlay"
+          onClick={(e) => handleOutsideClick(e, () => setShowConfirmMessage(false))}
+        >
           <div className="bg-white p-4 rounded" onClick={(e) => e.stopPropagation()}>
             <h2 className="text-lg font-medium">Confirm Order</h2>
             <h3 className="text-lg font-medium prose">
@@ -234,7 +274,7 @@ const PurchasePage: React.FC = () => {
             <div className="mt-4 flex space-x-4">
               <button
                 className="flex-grow py-2 bg-green-500 text-white rounded"
-                onClick={handleSelectedOrder}
+                onClick={handleOrderConfirmation}
               >
                 Confirm
               </button>

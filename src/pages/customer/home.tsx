@@ -3,9 +3,10 @@ import milk from "../../assets/category/milk.png";
 import offseason from "../../assets/category/offseason.png";
 import onion from "../../assets/category/onion.png";
 import meat from "../../assets/category/meat.png";
+import { useNavigate } from "react-router-dom";
+
 
 import section1 from "../../assets/section1.jpg";
-import section2 from "../../assets/section2.jpg";
 
 function PromoSection() {
 
@@ -92,6 +93,7 @@ function Home() {
     },
   ];
 
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col w-full">
@@ -129,7 +131,7 @@ function Home() {
                     <p className="text-lg font-semibold text-gray-800">{oCard.name}</p>
                     <p className="text-sm text-gray-500">{oCard.amount}{oCard.unit}</p>
                   </div>
-                  <button className="btn bg-accent text-white px-4 py-2 rounded-md hover:bg-accent transition duration-300">
+                  <button className="btn bg-accent text-white px-4 py-2 rounded-md hover:bg-accent transition duration-300" onClick={() => {navigate("/purchase-page")}}>
                     Order Now
                   </button>
                 </div>

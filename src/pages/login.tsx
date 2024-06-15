@@ -12,7 +12,12 @@ function Login() {
 
   const handleLogin = () => {
     if(email && password){
-      login({ email, password, name: "", type: "Consumer" })
+      if(email == "evod@gmail.com" && password == "123"){
+        login({name:"",email: email, password: password, type: "Consumer"});
+      }else{
+        login({name:"",email: email, password: password, type: "Producer"});
+
+      }
       navigate('/');
       return
     }
