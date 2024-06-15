@@ -27,7 +27,6 @@ function TableUI(props: { dairy: DairyProduct[] , handleDelete: (index: number) 
                 <th>Type</th>
                 <th>Amount</th>
                 <th>Details</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -57,16 +56,6 @@ function TableUI(props: { dairy: DairyProduct[] , handleDelete: (index: number) 
               ))}
             </tbody>
             {/* foot */}
-            <tfoot>
-              <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Amount</th>
-                <th>Details</th>
-                <th></th>
-              </tr>
-            </tfoot>
           </table>
         </div>
       );

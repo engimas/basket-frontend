@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import { MdOutlineDashboard } from "react-icons/md";
 import { AiOutlineStock } from "react-icons/ai";
-
+import { FaBasketShopping } from "react-icons/fa6";
 
 function SideBar() {
   return (
@@ -25,6 +25,12 @@ function SideBar() {
             }}>
             <MdOutlineDashboard/>
             <span>Settings</span>
+            </NavLink>
+            <NavLink to={"/orders"} className={({isActive})=>{
+                return 'w-full flex flex-row gap-4 items-center py-3 hover:bg-base-100  px-10 ' + (isActive ? " bg-slate-300" : "")
+            }}>
+            <FaBasketShopping />
+            <span>Orders</span>
             </NavLink>
         </div>
         <div className="content p-20 w-full overflow-hidden">

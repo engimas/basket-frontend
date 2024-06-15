@@ -16,6 +16,7 @@ import SideBar from "./components/sidebar";
 import NavbarProducer from "./components/navbarProducer";
 import Stock from "./pages/producer/stock";
 import SearchProducer from "./pages/producer/search";
+import Orders from "./pages/producer/orders";
 
 
 import Profile from "./components/basicProfile";
@@ -54,6 +55,8 @@ function Index() {
             <Route index element={<HomeProducer />} />
             <Route path="/stock" element={<Stock />} />
             <Route path="/search/:keyword" element={<SearchProducer />} />
+            <Route path="/orders" element={<Orders />} />
+
           </Route>
           </Route>
         </>
