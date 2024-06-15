@@ -6,6 +6,7 @@ import carrot from "../../assets/category/carrot.png";
 import coconut from "../../assets/category/coconut.png";
 import ghee from "../../assets/category/ghee.jpg";
 import corn from "../../assets/category/corn.png";
+import { Link } from "react-router-dom";
 
 function Cart() {
   const [activeTab, setActiveTab] = useState<
@@ -19,7 +20,7 @@ function Cart() {
         <div className="text-sm breadcrumbs">
           <ul>
             <li>
-              <a>Home</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <a>Cart</a>

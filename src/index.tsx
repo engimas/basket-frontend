@@ -9,6 +9,16 @@ import NavBar from "./components/navbar";
 import PurchasePage from "./pages/customer/purchasePage";
 import Cart from "./pages/customer/cart";
 import History from "./pages/customer/history";
+import Search from "./pages/customer/search";
+
+import HomeProducer from "./pages/producer/home"
+import SideBar from "./components/sidebar";
+
+import NavbarProducer from "./components/navbarProducer";
+import Stock from "./pages/producer/stock";
+import SearchProducer from "./pages/producer/search";
+
+
 
 
 function Index() {
@@ -31,11 +41,19 @@ function Index() {
             <Route path="/purchase-page" element={<PurchasePage />} />
             <Route path="/cart" element={<Cart/>} />
             <Route path="/history" element={<History/>} />
-
+            <Route path="/search/:keyword" element={<Search/>} />
           </Route>
         </>
       ) : (
-        <></>
+        <>
+        <Route path="/" element={<NavbarProducer />}>
+          <Route path="/" element={<SideBar />}>
+            <Route index element={<HomeProducer />} />
+            <Route path="/stock" element={<Stock />} />
+            <Route path="/search/:keyword" element={<SearchProducer />} />
+          </Route>
+          </Route>
+        </>
       )}
       <Route path="/auth">
         <Route path="/auth/login" element={<Login />} />

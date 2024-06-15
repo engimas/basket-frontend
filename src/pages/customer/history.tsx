@@ -6,6 +6,7 @@ import carrot from "../../assets/category/carrot.png";
 import coconut from "../../assets/category/coconut.png";
 import ghee from "../../assets/category/ghee.jpg";
 import corn from "../../assets/category/corn.png";
+import { Link } from "react-router-dom";
 
 function History() {
 
@@ -16,7 +17,7 @@ function History() {
         <div className="text-sm breadcrumbs">
           <ul>
             <li>
-              <a>Home</a>
+            <Link to="/">Home</Link>
             </li>
             <li>
               <a>History</a>
@@ -39,7 +40,6 @@ function History() {
 
                         <span className="text-sm bg-accent text-white w-min px-2 rounded-lg">New</span>
                       </p>
-                      <button className="ghost ml-auto">Edit</button>
                     </div>
                   </li>
                   <li className="flex flex-row bg-primary px-5 py-1 items-center gap-5">
@@ -52,7 +52,6 @@ function History() {
 
                         <span className="text-sm bg-accent text-white w-min px-2 rounded-lg">New</span>
                       </p>
-                      <button className="ghost ml-auto">Edit</button>
                     </div>
                   </li>
                   <li className="flex flex-row bg-primary px-5 py-1 items-center gap-5">
@@ -65,7 +64,6 @@ function History() {
 
                         <span className="text-sm bg-accent text-white w-min px-2 rounded-lg">New</span>
                       </p>
-                      <button className="ghost ml-auto">Edit</button>
                     </div>
                   </li>
                 </ul>

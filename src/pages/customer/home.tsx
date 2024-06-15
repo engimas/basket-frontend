@@ -8,11 +8,9 @@ import section1 from "../../assets/section1.jpg";
 import section2 from "../../assets/section2.jpg";
 
 function PromoSection() {
-    const appetizerImg = 'https://picsum.photos/600/400?random=1';
-    const pastaImg = 'https://picsum.photos/600/400?random=2';
 
     return (
-        <div className="flex flex-col lg:flex-row items-center bg-green-600 text-white p-8 lg:p-16">
+                  <div className="flex flex-col lg:flex-row items-center bg-green-600 text-white p-8 lg:p-16">
             <div className="lg:w-1/2">
                 <h1 className="text-3xl lg:text-5xl font-bold mb-4">
                     Treat yourself with Nepal's #1 Basket.
@@ -45,7 +43,7 @@ function PromoSection() {
 function Home() {
   const cards = [
     {
-      name: "Apple",
+      name: "Fresh in stock",
       img: Apple,
     },
     {

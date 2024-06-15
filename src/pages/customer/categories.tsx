@@ -19,6 +19,7 @@ import tumeric from "../../assets/category/turmeric.png";
 import veg from "../../assets/category/veg.png";
 import watermelon from "../../assets/category/watermelon.png";
 import yogurt from "../../assets/category/yogurt.webp";
+import { Link } from "react-router-dom";
 
 function Categories() {
   // carrot, coconut, corn, lychee, mango, parsley, watermelon
@@ -131,7 +132,7 @@ function Categories() {
         <div className="text-sm breadcrumbs">
           <ul>
             <li>
-              <a>Home</a>
+            <Link to="/">Home</Link>
             </li>
             <li>
               <a>Category</a>
