@@ -8,7 +8,8 @@ import Categories from "./pages/customer/categories";
 import NavBar from "./components/navbar";
 import PurchasePage from "./pages/customer/purchasePage";
 import Cart from "./pages/customer/cart";
-import History from "./pages/customer/history";
+import Profile from "./components/basicProfile";
+import Settings from "./pages/customer/settings";
 
 
 function Index() {
@@ -30,7 +31,8 @@ function Index() {
             <Route path="categories" element={<Categories />} />
             <Route path="/purchase-page" element={<PurchasePage />} />
             <Route path="/cart" element={<Cart/>} />
-            <Route path="/history" element={<History/>} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
 
           </Route>
         </>

@@ -11,7 +11,7 @@ function History() {
 
   return (
     <>
-      <section className="px-40 pt-10 mx-auto">
+      {/* <section className="px-40 pt-10 mx-auto">
         <h1 className="text-xl font-sans font-semibold">History</h1>
         <div className="text-sm breadcrumbs">
           <ul>
@@ -23,10 +23,12 @@ function History() {
             </li>
           </ul>
         </div>
-      </section>
+      </section> */}
       <section>
-        <div className="card mx-40 mt-10 bg-base-100 shadow-xl flex flex-row p-5">
+        <div className="card mt-10 bg-base-100 shadow-xl flex flex-row p-5">
           <div className="content w-full overflow-auto h-80 px-10 py-2">
+        <h1 className="text-xl mb-5 font-sans font-semibold">History</h1>
+
               <div className="tomorrow">
                 <ul className="list-none flex flex-col gap-3">
                   <li className="flex flex-row bg-primary px-5 py-1 items-center gap-5">
