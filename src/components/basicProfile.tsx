@@ -1,63 +1,89 @@
 import React, { useState } from "react";
 import ImageUpload from "./imageUpload";
+import History from "../pages/customer/history";
 
 type UserProfile = {
   name: string;
-  id: string;
-  age: number;
-  gender: string;
-  country: string;
-  rating: number;
-  email: string;
+  location: string;
   phone: string;
-  rate: number;
-  currency: string;
+  email: string;
 };
 
 const Profile: React.FC = () => {
   const [isEditMode, setIsEditMode] = useState(false);
+  const [userProfile, setUserProfile] = useState<UserProfile>({
+    name: "Atul Tiwari",
+    location: "Kupondole -10, Lalitpur, Nepal",
+    phone: "9711111111",
+    email: "atultiwari@gmail.com",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserProfile({ ...userProfile, [name]: value });
+  };
 
   const toggleEditMode = () => {
     setIsEditMode(!isEditMode);
   };
 
-  const userProfile: UserProfile = {
-    name: "Atul Tiwari",
-    id: "12345",
-    age: 18,
-    gender: "Male",
-    country: "Nepal",
-    email: "atultiwari@gmail.com",
-    rating: 4.7,
-    phone: "9711111111",
-    rate: 1000,
-    currency: "Nrs",
-  };
-
   return (
-    <div className="font-sans mx-auto max-w-2xl pl-0">
-      <div className="text-center">
-        <ImageUpload header={true} isEditMode={isEditMode} />
-        <div className="relative flex items-center justify-center w-full mt-[-40px]">
-          <div className="absolute left-0 ml-4">
-            <ImageUpload header={false} isEditMode={isEditMode} />
-          </div>
-          <div className="flex-grow text-center mt-12">
-            <h2 className="text-xl font-bold">{userProfile.name}</h2>
-           
-          </div>
-          <div className="absolute right-0 mr-4 mt-12">
+    <div className="font-sans mx-auto max-w-2xl p-4">
+      <div className="bg-white shadow-lg rounded-lg p-6 w-full">
+        <div className="flex items-center mb-4">
+          <ImageUpload header={false} isEditMode={isEditMode} />
+          <div className="ml-4 flex-grow">
+            {isEditMode ? (
+              <>
+                <input
+                  type="text"
+                  name="name"
+                  value={userProfile.name}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded p-2 w-full mb-2"
+                />
+                <input
+                  type="text"
+                  name="location"
+                  value={userProfile.location}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded p-2 w-full mb-2"
+                />
+                <input
+                  type="text"
+                  name="phone"
+                  value={userProfile.phone}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded p-2 w-full mb-2"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  value={userProfile.email}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded p-2 w-full mb-2"
+                />
+              </>
+            ) : (
+              <>
+                <p className="text-xl font-bold">Name: {userProfile.name}</p>
+                <p>Address: {userProfile.location}</p>
+                <p>Phone: {userProfile.phone}</p>
+                <p>Email: {userProfile.email}</p>
+              </>
+            )}
             <button
-              className={`px-4 py-2 rounded-lg cursor-pointer ${
+              className={`mt-4 px-4 py-2 rounded ${
                 isEditMode ? "bg-green-500" : "bg-blue-500"
               } text-white`}
               onClick={toggleEditMode}
             >
-              {isEditMode ? "Done" : "Edit Profile"}
+              {isEditMode ? "Save" : "Edit"}
             </button>
           </div>
         </div>
       </div>
+      <History />
     </div>
   );
 };

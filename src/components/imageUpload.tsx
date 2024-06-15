@@ -57,8 +57,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ header, isEditMode }) => {
   };
 
   return (
-    <div className={`flex justify-center items-center ${header ? 'w-full' : ''}`}>
-      <div className={`m-4 ${header ? 'w-full' : ''}`}>
+    <div className="flex justify-center items-center w-64">
+      <div className="m-4 w-64">
         <div onClick={handleClick} className="relative">
           {image ? (
             <img
@@ -70,7 +70,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ header, isEditMode }) => {
             <img
               src={defaultImage}
               alt="upload"
-              className={`object-fit ${header ? 'w-full h-80 rounded-lg border-2 border-dotted border-gray-300' : 'w-40 h-40 rounded-full border-2 border-dotted border-gray-300'}`}
+              className={`object-cover ${header ? 'w-full h-80 rounded-lg border-2 border-dotted border-gray-300' : 'w-40 h-40 rounded-full border-2 border-dotted border-gray-300'}`}
             />
           )}
           <input

@@ -28,9 +28,7 @@ return (
                 <Link to="/categories" className="btn btn-ghost btn-sm rounded-btn">
                     Categories
                 </Link>
-                <Link to="/categories" className="btn btn-ghost btn-sm rounded-btn">
-                    History
-                </Link>
+                
                 
             </div>
             <div className="flex-none">
@@ -66,9 +64,9 @@ return (
                             <span className="font-bold text-lg">8 Items</span>
                             <span className="text-info">Subtotal: $999</span>
                             <div className="card-actions">
-                                <button className="btn btn-primary btn-block">
+                                <Link to={"/cart"} className="btn btn-primary btn-block">
                                     View cart
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -91,10 +89,12 @@ return (
                         className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
                     >
                         <li>
+                            <Link to="/profile">
                             <a className="justify-between">
-                                Profile
+                            Profile
                                 <span className="badge">New</span>
                             </a>
+                            </Link>
                         </li>
                         <li>
                             <a>Settings</a>
